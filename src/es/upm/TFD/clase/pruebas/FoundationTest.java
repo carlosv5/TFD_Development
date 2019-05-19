@@ -15,21 +15,21 @@ import org.junit.Test;
 public class FoundationTest {
 
 	@Test
-	public void testIsComplete() {
+	public void givenACompleteFoundation_WhenCheckingIfItsComplete_ThenIsTrue() {
 		Foundation foundation = new CompleteFoundationBuilder().build();
 		Card card = new CardBuilder().number(Number.KING).build();
 		assertTrue(foundation.isComplete());
 	}
 	
 	@Test
-	public void testIsNotComplete() {
+	public void givenAnIncompleteFoundation_WhenCheckingIfItsComplete_ThenIsFalse() {
 		Card card = new CardBuilder().number(Number.AS).build();
 		Foundation foundation = new FoundationBuilder().card(card).build();
 		assertFalse(foundation.isComplete());
 	}
 	
 	@Test
-	public void testFitsIn() {
+	public void givenAFoundatio_whenWeAddACardThatFitsIn_ThenTheResultIsTrue() {
 		Card card1 = new CardBuilder().number(Number.AS).suit(Suit.CLOVERS).build();
 		Card card2 = new CardBuilder().number(Number.TWO).suit(Suit.CLOVERS).build();
 		Card card3 = new CardBuilder().number(Number.THREE).suit(Suit.CLOVERS).build();
@@ -38,7 +38,7 @@ public class FoundationTest {
 	}
 	
 	@Test
-	public void testDontFitsInDifferentSuit() {
+	public void givenAFoundatio_whenWeAddACardThatDoesNotFitInBySuit_ThenTheResultIsFalse() {
 		Card card1 = new CardBuilder().number(Number.AS).suit(Suit.CLOVERS).build();
 		Card card2 = new CardBuilder().number(Number.TWO).suit(Suit.CLOVERS).build();
 		Card card3 = new CardBuilder().number(Number.THREE).suit(Suit.DIAMONDS).build();
@@ -47,7 +47,7 @@ public class FoundationTest {
 	}
 	
 	@Test
-	public void testDontFitsInDifferentNumber() {
+	public void givenAFoundatio_whenWeAddACardThatDoesNotFitInByNumber_ThenTheResultIsFalse() {
 		Card card1 = new CardBuilder().number(Number.AS).suit(Suit.CLOVERS).build();
 		Card card2 = new CardBuilder().number(Number.TWO).suit(Suit.CLOVERS).build();
 		Card card3 = new CardBuilder().number(Number.FIVE).suit(Suit.CLOVERS).build();

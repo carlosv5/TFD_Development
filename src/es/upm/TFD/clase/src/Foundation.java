@@ -2,22 +2,10 @@ package es.upm.TFD.clase.src;
 
 import java.util.Stack;
 
-public class Foundation {
-	
-	private Stack<Card> stack;
-	private Suit suit;
-	
+public class Foundation extends CardStack{
+		
 	public Foundation(Suit suit) {
 		this.suit = suit;
-		stack = new	Stack<Card>();
-	}
-	
-	public Card peek() {
-		return stack.peek();
-	}
-	
-	public void push(Card card) {
-		stack.push(card);
 	}
 	
 	public boolean isComplete() {
@@ -30,5 +18,9 @@ public class Foundation {
 		}
 		return true;
 }
+	
+	public Suit getSuit() {
+		return this.suit;
+	}
 
 }
