@@ -9,7 +9,10 @@ public class Pile extends CardStack{
 	private int numberOfFaceUpCards;
 	
 	public Pile(int number, List<Card> cards) {
-		
+		for(int i = 0; i < number; i ++) {
+			stack.push(cards.get(i));
+			System.out.println("prueba");
+		}
 	}
 	
 	private void flipFirstCard() {
@@ -17,9 +20,12 @@ public class Pile extends CardStack{
 	}
 	
 	public boolean fitsIn(Card card) {
-		return false;
+		if((card.getSuit().getColor() != stack.peek().getSuit().getColor()) && !(card.isNextTo(stack.peek()))){
+			return true;	
+		}
+			
+			return false;
 	}
-	
 	public List<Card> getTop(int numberOfCards){
 		return null;
 	}

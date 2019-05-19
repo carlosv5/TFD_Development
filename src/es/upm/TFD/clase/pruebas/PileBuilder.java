@@ -15,14 +15,13 @@ public class PileBuilder {
 	private int numberOfFaceUpCards;
 	
 	public PileBuilder(){
-		cards = new ArrayList<Card>();
+		this.cards = new ArrayList<Card>();
+		this.number = 0;
+		this.numberOfFaceUpCards = 0;
 	}
 	
 	public Pile build() {
 		Pile pile =  new Pile(number, cards);
-		for(int i = 0; i < number; i++) {
-			pile.push(cards.get(i));
-		}
 		return pile;
 	}
 	
@@ -37,6 +36,7 @@ public class PileBuilder {
 	}
 	
 	public PileBuilder card(Card card) {
+		this.number++;
 		this.cards.add(card);
 		return this;
 	}
