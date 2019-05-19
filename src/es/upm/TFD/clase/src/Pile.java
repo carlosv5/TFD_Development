@@ -1,5 +1,6 @@
 package es.upm.TFD.clase.src;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
@@ -11,7 +12,6 @@ public class Pile extends CardStack{
 	public Pile(int number, List<Card> cards) {
 		for(int i = 0; i < number; i ++) {
 			stack.push(cards.get(i));
-			System.out.println("prueba");
 		}
 	}
 	
@@ -27,7 +27,18 @@ public class Pile extends CardStack{
 			return false;
 	}
 	public List<Card> getTop(int numberOfCards){
-		return null;
+		List<Card> cardList = new ArrayList<Card>();
+		if(numberOfCards > stack.size()) {
+			return null;
+		}
+		if(numberOfCards == 0) {
+			return cardList;
+		}
+		for(int i = 0; i < numberOfCards; i++){
+			cardList.add(stack.pop());
+
+		}
+		return cardList;
 	}
 	
 	public void addToTop(List<Card> cards) {
