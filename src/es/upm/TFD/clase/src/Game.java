@@ -7,6 +7,9 @@ public class Game {
 	
 	public static int NUMBER_OF_PILES = 4;
 	private Map<Suit, Foundation> foundations;
+	private Stock stock;
+	private Waste waste;
+	private List<Pile> piles;
 	
 	public Game() {
 		
@@ -57,12 +60,12 @@ public class Game {
 	}
 	
 	public Stock getStock() {
-		return null;
+		return stock;
 		
 	}
 	
 	public Waste getWaste() {
-		return null;
+		return waste;
 		
 	}
 	
@@ -71,7 +74,7 @@ public class Game {
 	}
 	
 	public List<Pile> getPiles(){
-		
+		return piles;
 	}
 
 }
