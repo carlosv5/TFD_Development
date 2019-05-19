@@ -16,7 +16,9 @@ public class Pile extends CardStack{
 	}
 	
 	private void flipFirstCard() {
-		
+		if(stack.size() > 0 && !stack.peek().isFaceUp()) {
+			stack.peek().flip();
+		}
 	}
 	
 	public boolean fitsIn(Card card) {
@@ -46,6 +48,7 @@ public class Pile extends CardStack{
 			cardList.add(stack.pop());
 
 		}
+		this.flipFirstCard();
 		return cardList;
 	}
 	
@@ -67,6 +70,7 @@ public class Pile extends CardStack{
 		for(int i = 0; i < numberOfCards; i++) {
 				stack.pop();
 		}
+		this.flipFirstCard();
 		
 	}
 	
