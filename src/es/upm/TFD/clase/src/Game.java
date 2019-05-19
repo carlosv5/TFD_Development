@@ -1,22 +1,32 @@
 package es.upm.TFD.clase.src;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class Game {
 	
-	public static int NUMBER_OF_PILES = 4;
+	public static int NUMBER_OF_PILES = 7;
 	private Map<Suit, Foundation> foundations;
 	private Stock stock;
 	private Waste waste;
 	private List<Pile> piles;
 	
-	public Game() {
-		
+	public Game() {	
+		this.clear();
 	}
 	
 	public void clear() {
-		
+		this.stock = new Stock();
+		this.waste = new Waste();
+		for(int i = 0; i<NUMBER_OF_PILES; i++) {
+			Pile pile = new Pile(i, new ArrayList<Card>());
+			piles.add(pile);
+		}
+		for(Suit suit : Suit.values()) {
+			Foundation foundation = new Foundation(suit);
+			foundations.put(suit, foundation);	
+		}	
 	}
 	
 	public boolean isFinished() {
