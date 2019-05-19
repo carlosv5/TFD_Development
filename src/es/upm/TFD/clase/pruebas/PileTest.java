@@ -130,5 +130,45 @@ public class PileTest {
 		pile.addToTop(cardsToAdd);
 		assertEquals(cardList, pile.getCards());		
 	}
+	
+	@Test
+	public void givenAPileWith2Cards_whenRemoveToTop0Card_ThenTheResultIsTheSameCards() {
+		Card card1 = new CardBuilder().number(Number.EIGHT).suit(Suit.CLOVERS).build();
+		Card card2 = new CardBuilder().number(Number.SEVEN).suit(Suit.HEARTS).build();
+		Pile pile = new PileBuilder().card(card1).card(card2).build();
+		List<Card> cardList = new ArrayList<Card>();
+		cardList.add(card1);
+		cardList.add(card2);
+
+		int quantity = 0;
+		pile.removeTop(quantity);
+		assertEquals(cardList, pile.getCards());		
+	}
+	
+	@Test
+	public void givenAPileWith2Cards_whenRemoveToTop1Card_ThenTheResultIsCorrect() {
+		Card card1 = new CardBuilder().number(Number.EIGHT).suit(Suit.CLOVERS).build();
+		Card card2 = new CardBuilder().number(Number.SEVEN).suit(Suit.HEARTS).build();
+		Pile pile = new PileBuilder().card(card1).card(card2).build();
+		List<Card> cardList = new ArrayList<Card>();
+		cardList.add(card1);
+
+		int quantity = 2;
+		pile.removeTop(quantity);
+		assertEquals(cardList, pile.getCards());			
+	}
+	
+	@Test
+	public void givenAPileWith2Cards_whenRemoveToTop3Card_ThenTheResultIsNull() {
+		Card card1 = new CardBuilder().number(Number.EIGHT).suit(Suit.CLOVERS).build();
+		Card card2 = new CardBuilder().number(Number.SEVEN).suit(Suit.HEARTS).build();
+		Pile pile = new PileBuilder().card(card1).card(card2).build();
+		List<Card> cardList = new ArrayList<Card>();
+		cardList.add(card1);
+
+		int quantity = 3;
+		pile.removeTop(quantity);
+		assertEquals(null, pile.getCards());			
+	}
 
 }

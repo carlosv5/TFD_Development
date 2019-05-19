@@ -59,6 +59,7 @@ public class Pile extends CardStack{
 	
 	public void removeTop(int numberOfCards) {
 		
+		
 	}
 	
 	public boolean empty() {
