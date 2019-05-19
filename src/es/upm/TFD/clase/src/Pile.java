@@ -20,6 +20,14 @@ public class Pile extends CardStack{
 	}
 	
 	public boolean fitsIn(Card card) {
+		if(stack.empty()) {
+			if(card.getNumber() != Number.KING) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+			
 		if((card.getSuit().getColor() != stack.peek().getSuit().getColor()) && !(card.isNextTo(stack.peek()))){
 			return true;	
 		}
@@ -42,7 +50,11 @@ public class Pile extends CardStack{
 	}
 	
 	public void addToTop(List<Card> cards) {
-		
+		for(int i = 0; i < cards.size(); i++) {
+			if(this.fitsIn(cards.get(i))){
+				stack.push(cards.get(i));
+			}
+		}
 	}
 	
 	public void removeTop(int numberOfCards) {
