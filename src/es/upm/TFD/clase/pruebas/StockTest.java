@@ -1,6 +1,7 @@
 package es.upm.TFD.clase.pruebas;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,10 +25,10 @@ public class StockTest {
 		Card card4 = new CardBuilder().number(Number.FIVE).build();
 		Stock stock = new StockBuilder().card(card1).card(card2).card(card3).build();
 		List<Card> cardList = new ArrayList<Card>();
-		cardList.add(card1);
-		cardList.add(card2);
 		cardList.add(card4);
-		assertEquals(stock.takeTop(quantity), cardList);
+		cardList.add(card2);
+		cardList.add(card1);
+		assertNotEquals(stock.takeTop(quantity), cardList);
 	}
 	
 	@Test
@@ -38,7 +39,7 @@ public class StockTest {
 		Card card3 = new CardBuilder().number(Number.THREE).build();
 		Stock stock = new StockBuilder().card(card1).card(card2).card(card3).build();
 		List<Card> cardList = new ArrayList<Card>();
-		cardList.add(card1);
+		cardList.add(card3);
 		cardList.add(card2);
 		assertEquals(stock.takeTop(quantity), cardList);
 	}
@@ -46,15 +47,15 @@ public class StockTest {
 	
 	@Test
 	public void givenAStockAnd3Cards_whenTakingTop3Cards_ThenTheCardsAreTheSame() {
-		int quantity = 2;
+		int quantity = 3;
 		Card card1 = new CardBuilder().number(Number.AS).build();
 		Card card2 = new CardBuilder().number(Number.TWO).build();
 		Card card3 = new CardBuilder().number(Number.THREE).build();
 		Stock stock = new StockBuilder().card(card1).card(card2).card(card3).build();
 		List<Card> cardList = new ArrayList<Card>();
-		cardList.add(card1);
-		cardList.add(card2);		
 		cardList.add(card3);
+		cardList.add(card2);		
+		cardList.add(card1);
 		assertEquals(stock.takeTop(quantity), cardList);
 	}
 	
@@ -65,7 +66,6 @@ public class StockTest {
 		Card card2 = new CardBuilder().number(Number.TWO).build();
 		Card card3 = new CardBuilder().number(Number.THREE).build();
 		Stock stock = new StockBuilder().card(card1).card(card2).card(card3).build();
-		List<Card> cardList = new ArrayList<Card>();
 		assertEquals(stock.takeTop(quantity), null);
 	}
 	
