@@ -58,7 +58,15 @@ public class Pile extends CardStack{
 	}
 	
 	public void removeTop(int numberOfCards) {
-		
+		if(numberOfCards < 0) {
+			return;
+		}
+		if(numberOfCards > stack.size()) {
+			return;
+		}
+		for(int i = 0; i < numberOfCards; i++) {
+				stack.pop();
+		}
 		
 	}
 	

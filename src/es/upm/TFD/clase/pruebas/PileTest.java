@@ -18,37 +18,37 @@ import es.upm.TFD.clase.src.Suit;
 
 public class PileTest {
 	
-//	@Test
-//	public void givenAPile_whenAddACardThatDoesNotFitInByColorSuit_ThenTheResultIsFalse() {
-//		Card card1 = new CardBuilder().number(Number.KING).suit(Suit.CLOVERS).build();
-//		Card card2 = new CardBuilder().number(Number.QUEEN).suit(Suit.CLOVERS).build();
-//		Pile pile = new PileBuilder().card(card1).build();
-//		assertFalse(pile.fitsIn(card2));		
-//	}
-//	
-//	@Test
-//	public void givenAPile_whenAddACardThatDoesNotFitInByNumber_ThenTheResultIsFalse() {
-//		Card card1 = new CardBuilder().number(Number.KING).suit(Suit.CLOVERS).build();
-//		Card card2 = new CardBuilder().number(Number.TWO).suit(Suit.CLOVERS).build();
-//		Pile pile = new PileBuilder().card(card1).build();
-//		assertFalse(pile.fitsIn(card2));		
-//	}
-//	
-//	@Test
-//	public void givenAPile_whenAddACardThatFitsIn_ThenTheResultIsTrue() {
-//		Card card1 = new CardBuilder().number(Number.SEVEN).suit(Suit.CLOVERS).build();
-//		Card card2 = new CardBuilder().number(Number.SIX).suit(Suit.HEARTS).build();
-//		Pile pile = new PileBuilder().card(card1).build();
-//		assertTrue(pile.fitsIn(card2));		
-//	}
-//	
-//	@Test
-//	public void givenAPile_whenAddACardThatDoesNotFitInByCloseUpperNumber_ThenTheResultIsFalse() {
-//		Card card1 = new CardBuilder().number(Number.SEVEN).suit(Suit.CLOVERS).build();
-//		Card card2 = new CardBuilder().number(Number.EIGHT).suit(Suit.HEARTS).build();
-//		Pile pile = new PileBuilder().card(card1).build();
-//		assertFalse(pile.fitsIn(card2));		
-//	}
+	@Test
+	public void givenAPile_whenAddACardThatDoesNotFitInByColorSuit_ThenTheResultIsFalse() {
+		Card card1 = new CardBuilder().number(Number.KING).suit(Suit.CLOVERS).build();
+		Card card2 = new CardBuilder().number(Number.QUEEN).suit(Suit.CLOVERS).build();
+		Pile pile = new PileBuilder().card(card1).build();
+		assertFalse(pile.fitsIn(card2));		
+	}
+	
+	@Test
+	public void givenAPile_whenAddACardThatDoesNotFitInByNumber_ThenTheResultIsFalse() {
+		Card card1 = new CardBuilder().number(Number.KING).suit(Suit.CLOVERS).build();
+		Card card2 = new CardBuilder().number(Number.TWO).suit(Suit.CLOVERS).build();
+		Pile pile = new PileBuilder().card(card1).build();
+		assertFalse(pile.fitsIn(card2));		
+	}
+	
+	@Test
+	public void givenAPile_whenAddACardThatFitsIn_ThenTheResultIsTrue() {
+		Card card1 = new CardBuilder().number(Number.SEVEN).suit(Suit.CLOVERS).build();
+		Card card2 = new CardBuilder().number(Number.SIX).suit(Suit.HEARTS).build();
+		Pile pile = new PileBuilder().card(card1).build();
+		assertTrue(pile.fitsIn(card2));		
+	}
+	
+	@Test
+	public void givenAPile_whenAddACardThatDoesNotFitInByCloseUpperNumber_ThenTheResultIsFalse() {
+		Card card1 = new CardBuilder().number(Number.SEVEN).suit(Suit.CLOVERS).build();
+		Card card2 = new CardBuilder().number(Number.EIGHT).suit(Suit.HEARTS).build();
+		Pile pile = new PileBuilder().card(card1).build();
+		assertFalse(pile.fitsIn(card2));		
+	}
 
 	@Test
 	public void givenAPileWith2Cards_whenGetTop2Cards_ThenTheResultIsTheThreeCorrectCards() {
@@ -153,22 +153,23 @@ public class PileTest {
 		List<Card> cardList = new ArrayList<Card>();
 		cardList.add(card1);
 
-		int quantity = 2;
+		int quantity = 1;
 		pile.removeTop(quantity);
 		assertEquals(cardList, pile.getCards());			
 	}
 	
 	@Test
-	public void givenAPileWith2Cards_whenRemoveToTop3Card_ThenTheResultIsNull() {
+	public void givenAPileWith2Cards_whenRemoveToTop3Card_ThenTheResultIsTheSame() {
 		Card card1 = new CardBuilder().number(Number.EIGHT).suit(Suit.CLOVERS).build();
 		Card card2 = new CardBuilder().number(Number.SEVEN).suit(Suit.HEARTS).build();
 		Pile pile = new PileBuilder().card(card1).card(card2).build();
 		List<Card> cardList = new ArrayList<Card>();
 		cardList.add(card1);
+		cardList.add(card2);
 
 		int quantity = 3;
 		pile.removeTop(quantity);
-		assertEquals(null, pile.getCards());			
+		assertEquals(cardList, pile.getCards());			
 	}
 
 }
