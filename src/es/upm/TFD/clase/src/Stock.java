@@ -13,7 +13,6 @@ public class Stock extends CardStack{
 			List<Card> cardList = new ArrayList<Card>();
 			for(int i = 0; i<quantity; i++) {
 				cardList.add(stack.pop());
-				System.out.println("taking one");
 			}
 			return cardList;
 		}
