@@ -1,17 +1,34 @@
 package es.upm.TFD.clase.pruebas;
 
 import es.upm.TFD.clase.src.Game;
+import es.upm.TFD.clase.src.Stock;
 import es.upm.TFD.clase.src.Error;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+
+import org.junit.Test;
 
 
 
 public class GameTest {
 	
-	public void testMoveFromStockToWaste() {
+	@Test
+	public void givenAInitialGame_WhenMovingFromStockToWaste_theResultIsCorrect() {
 		Game game = new Game();
 		Error error = game.moveFromStockToWaste();
 		assertNull(error);
+	}
+	
+	@Test
+	public void givenAInitialGameWithEmptyStock_WhenMovingFromStockToWaste_theResultIsErrorEmptyStock() {
+		Game game = new Game();
+		Stock stock = game.getStock();
+		while(!stock.empty()) {
+			stock.pop();
+		}
+		Error error = game.moveFromStockToWaste();
+		assertEquals(error, Error.EMPTY_STOCK);
 	}
 
 }
