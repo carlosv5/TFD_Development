@@ -2,6 +2,7 @@ package es.upm.TFD.clase.pruebas;
 
 import es.upm.TFD.clase.src.Game;
 import es.upm.TFD.clase.src.Stock;
+import es.upm.TFD.clase.src.Suit;
 import es.upm.TFD.clase.src.Waste;
 import es.upm.TFD.clase.src.Error;
 
@@ -69,6 +70,23 @@ public class GameTest {
 		Waste waste = game.getWaste();
 		waste.push(stock.pop());
 		Error error = game.moveFromWasteToPile(1);
+		assertNull(error);
+	}
+	
+	@Test
+	public void givenAInitialGameWithEmptyWaste_WhenMovingFromWasteToFoundations_theResultIsErrorEmptyWaste() {
+		Game game = new Game();
+		Error error = game.moveFromWasteToFoundations(Suit.HEARTS);
+		assertEquals(error, Error.EMPTY_WASTE);
+	}
+	
+	@Test
+	public void givenAInitialGame_WhenMovingFromWasteToFoundations_theResultIsCorrect() {
+		Game game = new Game();
+		Stock stock = game.getStock();
+		Waste waste = game.getWaste();
+		waste.push(stock.pop());
+		Error error = game.moveFromWasteToFoundations(Suit.HEARTS);
 		assertNull(error);
 	}
 

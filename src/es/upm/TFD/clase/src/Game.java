@@ -75,8 +75,17 @@ public class Game {
 	}
 	
 	public Error moveFromWasteToFoundations(Suit suit) {
-		return null;
+		if(waste.empty()) {
+			return Error.EMPTY_WASTE;
+		}
 		
+		if(foundations.get(suit).fitsIn(waste.peek())) {
+			foundations.get(suit).push(waste.pop());
+		} else {
+			return Error.NO_FIT_FOUNDATION;
+		}
+		
+		return null;		
 	}
 	
 	public Error moveFromWasteToStock() {
@@ -97,7 +106,9 @@ public class Game {
 		
 		if(piles.get(pileIndex).fitsIn(waste.peek())) {
 			piles.get(pileIndex).push(waste.pop());
-		}	
+		} else {
+			return Error.NO_FIT_PILE;
+		}
 		
 		return null;
 		
