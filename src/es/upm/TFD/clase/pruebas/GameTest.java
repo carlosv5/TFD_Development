@@ -33,7 +33,7 @@ public class GameTest {
 	}
 	
 	@Test
-	public void testMoveFromWasteToStock() {
+	public void givenAInitialGame_WhenMovingFromWasteToStock_theResultIsCorrect() {
 		Game game = new Game();
 		Stock stock = game.getStock();
 		Waste waste = game.getWaste();
@@ -45,7 +45,7 @@ public class GameTest {
 	}
 	
 	@Test
-	public void testEmptyMoveFromWasteToStock() {
+	public void givenAInitialGameWithEmptyWaste_WhenMovingFromWasteToStock_theResultIsErrorEmptyWaste() {
 		Game game = new Game();
 		Waste waste = game.getWaste();
 		while(!waste.empty()) {
@@ -53,6 +53,23 @@ public class GameTest {
 		}
 		Error error = game.moveFromWasteToStock();
 		assertEquals(error, Error.EMPTY_WASTE);
+	}
+	
+	@Test
+	public void givenAInitialGameWithEmptyWaste_WhenMovingFromWasteToPile_theResultIsErrorEmptyWaste() {
+		Game game = new Game();
+		Error error = game.moveFromWasteToPile(1);
+		assertEquals(error, Error.EMPTY_WASTE);
+	}
+	
+	@Test
+	public void givenAInitialGame_WhenMovingFromWasteToPile_theResultIsCorrect() {
+		Game game = new Game();
+		Stock stock = game.getStock();
+		Waste waste = game.getWaste();
+		waste.push(stock.pop());
+		Error error = game.moveFromWasteToPile(1);
+		assertNull(error);
 	}
 
 }

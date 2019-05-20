@@ -91,6 +91,14 @@ public class Game {
 	}
 	
 	public Error moveFromWasteToPile(int pileIndex) {
+		if(waste.empty()) {
+			return Error.EMPTY_WASTE;
+		}
+		
+		if(piles.get(pileIndex).fitsIn(waste.peek())) {
+			piles.get(pileIndex).push(waste.pop());
+		}	
+		
 		return null;
 		
 	}
