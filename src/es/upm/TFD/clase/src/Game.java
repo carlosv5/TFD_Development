@@ -63,11 +63,9 @@ public class Game {
 	public Error moveFromStockToWaste() {
 		int quantity = 3;
 		for(int i = 0; i < quantity; i ++) {
-			System.out.println("iteration");
 			List<Card> cardList = stock.takeTop(1);
 			if(cardList != null) {
 				waste.push(cardList.get(0));
-				System.out.println("pushing" + cardList.get(0).getNumber().getValue());
 			} else {
 				return Error.EMPTY_STOCK;
 			}
@@ -82,6 +80,12 @@ public class Game {
 	}
 	
 	public Error moveFromWasteToStock() {
+		if(waste.empty()) {
+			return Error.EMPTY_WASTE;
+		}
+		while(!waste.empty()) {
+			stock.push(waste.pop());
+		}
 		return null;
 		
 	}
