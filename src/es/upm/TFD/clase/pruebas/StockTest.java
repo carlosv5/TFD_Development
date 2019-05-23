@@ -79,19 +79,5 @@ public class StockTest {
 		List<Card> cardList = new ArrayList<Card>();
 		assertEquals(stock.takeTop(quantity), cardList);
 	}
-
-	@Test
-	public void testPush() {
-		Card card = new CardBuilder().number(Number.AS).build();
-		Stock stock = new Stock();
-		stock.push(card);
-		assertEquals(stock.peek(), card);
-	}
-
-	@Test
-	public void testPop() {
-		Card card = new CardBuilder().number(Number.AS).build();
-		Stock stock = new StockBuilder().card(card).build();
-		assertEquals(stock.pop(), card);
-	}
+	
 }
