@@ -55,39 +55,5 @@ public class GameTest {
 		Error error = game.moveFromWasteToStock();
 		assertEquals(error, Error.EMPTY_WASTE);
 	}
-	
-//	@Test
-//	public void givenAInitialGameWithEmptyWaste_WhenMovingFromWasteToPile_theResultIsErrorEmptyWaste() {
-//		Game game = new Game();
-//		Error error = game.moveFromWasteToPile(1);
-//		assertEquals(error, Error.EMPTY_WASTE);
-//	}
-//	
-//	@Test
-//	public void givenAInitialGame_WhenMovingFromWasteToPile_theResultIsCorrect() {
-//		Game game = new Game();
-//		Stock stock = game.getStock();
-//		Waste waste = game.getWaste();
-//		waste.push(stock.pop());
-//		Error error = game.moveFromWasteToPile(1);
-//		assertNull(error);
-//	}
-//	
-//	@Test
-//	public void givenAInitialGameWithEmptyWaste_WhenMovingFromWasteToFoundations_theResultIsErrorEmptyWaste() {
-//		Game game = new Game();
-//		Error error = game.moveFromWasteToFoundations(Suit.HEARTS);
-//		assertEquals(error, Error.EMPTY_WASTE);
-//	}
-//	
-//	@Test
-//	public void givenAInitialGame_WhenMovingFromWasteToFoundations_theResultIsCorrect() {
-//		Game game = new Game();
-//		Stock stock = game.getStock();
-//		Waste waste = game.getWaste();
-//		waste.push(stock.pop());
-//		Error error = game.moveFromWasteToFoundations(Suit.HEARTS);
-//		assertNull(error);
-//	}
 
 }
